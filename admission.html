@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>ENGINEERING ADMISSION PREDICTION SYSTEM</title>
+    <link rel="icon" href="tn_logo.png">
+     <!-- Link your CSS file here -->
+     <link rel="stylesheet" href="admission.css">
+</head>
+<body><form name="admission" method="post" action="admission.php"><br>
+    <center><h2>ENGINEERING ADMISSION PREDICTION SYSTEM</h2></center><br><br>
+    <center>
+
+     <label>NAME</label>
+     <input type="text" name="name" placeholder="Enter your name"  required><br><br>
+     <label>DOB</label>
+     <input type="date" dob="dob" placeholder="date of birth" required><br>
+     <h1>Gender</h1>
+          <label for="maleRadio">
+             <input type="radio" id="maleRadio" name="gender" value="Male"> Male
+         </label><br>
+ 
+         <label for="femaleRadio">
+             <input type="radio" id="femaleRadio" name="gender" value="Female"> Female
+         </label><br>
+ 
+         <label for="otherRadio">
+             <input type="radio" id="otherRadio" name="gender" value="Other"> Other
+         </label><br><br>
+ 
+     <label>12th REGISTER NO</label>
+     <input type="number" name="registerno" placeholder="Register No" required><br><br>
+     <label>Random number</label>
+     <input type="number" name="randomno" placeholder="Random number" required><br><br>
+   
+     
+     <label for="caste">CASTE</label>
+     <select  id="caste" name="caste" required><br>
+     <option value=""></option>
+     <option value="GENERAL">GENERAL</option>
+     <option value="OC">OC</option>
+     <option value="BC">BC</option>
+     <option value="BCM">BCM</option>
+     <option value="MBC">MBC</option>
+     <option value="SC">SC</option>
+     <option value="SCA">SCA</option>
+     <option value="ST">ST</option>
+     </select><br><br>
+     <label for="subject6">Enter MATHAMETICS Marks:</label>
+     <input type="number" id="subject6" name="subject6"  required><br>
+
+     <label for="subject3">Enter PHYSICS Marks (Divided by 2):</label>
+     <input type="number" id="subject3" name="subject3" required><br>
+
+     <label for="subject4">Enter CHEMISTRY Marks (Divided by 2):</label>
+     <input type="number" id="subject4" name="subject4" required><br>
+    
+      
+        <h1>Select an Engineering College:</h1>
+        <label for="collegeSelect">Choose a College:</label>
+        <select id="collegeSelect" name="college" required>
+            <option value=""></option>
+            <option value="TEC">Thangavelu Engineering College (TEC)</option>
+            <option value="KEC">Kings Engineering College (KEC)</option>
+            <option value="SSNCE">Sri Sivasubramaniya Nadar College of Engineering</option>
+            <option value="SSREC">Sri Sai Ram Engineering College</option>
+            <option value="SSIT">Sri Sairam Institute of Technology</option>
+            <option value="CIT">Chennai Institute of Technology</option>
+            <option value="AEC">Adhiparasakthi Engineering College</option>
+            <option value="MSAJCE">Mohamed Sathak AJ College of Engineering</option>
+            <option value="GCT">Government College Of Technology</option>
+            <option value="PSG">PSG College Of Technology</option>
+            </select>
+
+
+                <h1>Select an Undergraduate Engineering Course:</h1>
+                
+                    <label for="courseSelect">Choose a Course:</label>
+                    <select id="courseSelect" name="course" required>
+                        <option value=""></option>
+                        <option value="Computer Science">Computer Science and Engineering (B.Tech)</option>
+                        <option value="Mechanical">Mechanical Engineering (B.Tech)</option>
+                        <option value="Civil">Civil Engineering (B.Tech)</option>
+                        <option value="ECE">Electronics and Communication Engineering (B.Tech)</option>
+                        <option value="EEE">Electrical and Electronics Engineering (B.Tech)</option>
+                        <option value="IT">Information Technology (B.Tech)</option>
+                        <option value="Chemical">Chemical Engineering (B.Tech)</option>
+                        <option value="Aerospace">Aerospace Engineering (B.Tech)</option>
+                        <option value="Biotechnology">Biotechnology (B.Tech)</option>
+                        <option value="Aeronautical">Aeronautical Engineering (B.Tech)</option>
+                        <option value="EIE">Electronics and Instrumentation Engineering (B.Tech)</option>
+                        <option value="BE_Civil">Civil Engineering (B.E)</option>
+                        <option value="BE_Mechanical">Mechanical Engineering (B.E)</option>
+                        <option value="BE_EEE">Electrical and Electronics Engineering (B.E)</option>
+                        <option value="BE_ECE">Electronics and Communication Engineering (B.E)</option>
+                        <option value="BE_CSE">Computer Science and Engineering (B.E)</option>
+                        <option value="BE_IT">Information Technology (B.E)</option>
+                        <option value="BE_Biomedical">Biomedical Engineering (B.E)</option>
+                        <option value="BE_Chemical">Chemical Engineering (B.E)</option>
+                        <option value="BE_Automobile">Automobile Engineering (B.E)</option>
+                    </select>
+                    <br><br>
+                    <button type="button" id="Calculate" onclick="calculateCutoffAndProbability()" value="Calculate">Calculate</button>
+                </form>
+            
+                <p id="result"></p>
+                <script>
+                    function calculateCutoffAndProbability() {
+                        // Get the values of subject6, subject3, and subject4 from the form
+                        const subject6 = parseFloat(document.getElementById('subject6').value);
+                        const subject3Div2 = parseFloat(document.getElementById('subject3').value);
+                        const subject4Div2 = parseFloat(document.getElementById('subject4').value);
+            
+                        // Calculate the sum of subject6, subject3, and subject4
+                        const sum = subject6 + subject3Div2 + subject4Div2;
+            
+                        // Get the selected college and course
+                        const collegeSelect = document.getElementById("collegeSelect").value;
+                        const courseSelect = document.getElementById("courseSelect").value;
+            
+                        // Calculate the cutoff
+                        const totalMarks = sum;
+                        const remainingMarks = 200 - totalMarks;
+            
+                        // Calculate the probability (Random for demonstration)
+                        let probability = Math.floor(Math.random() * 101); // Replace with your own logic
+            
+                        // Display the results
+                        const resultElement = document.getElementById('result');
+                        if (remainingMarks === 0) {
+                            resultElement.textContent = `Cutoff: 200 (All subjects combined to 200)`;
+                        } else if (remainingMarks > 0) {
+                            resultElement.textContent = `Cutoff: ${totalMarks} \n`;
+                        } else {
+                            resultElement.textContent = `Invalid input. Total marks exceed 200.\n`;
+                        }{
+                            // Calculate the probability
+const cutoff = 161;
+    const totalMarks = 200;
+
+    // Calculate the probability as a percentage
+    const probability = (cutoff / totalMarks) * 100;
+
+    // Display the result
+    console.log(`The probability of a ${cutoff} cutoff out of ${totalMarks} is ${probability.toFixed(2)}%.`);
+
+                        }
+
+
+
+                        
+                        resultElement.textContent += `Probability for ${collegeSelect} at ${courseSelect}: ${probability}%`;
+                    }
+                </script>
+
+
+     
+
+     
+
+    </center><br>
+</form>
+    
+    
+</body>
+</html>
