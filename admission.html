@@ -6,7 +6,7 @@
    
     <title>ENGINEERING ADMISSION PREDICTION SYSTEM</title>
     <link rel="icon" href="tn_logo.png">
-     <!-- Link your CSS file here -->
+     
      <link rel="stylesheet" href="admission.css">
 </head>
 <body><form name="admission" method="post" action="admission.php"><br>
@@ -108,26 +108,26 @@
                 <p id="result"></p>
                 <script>
                     function calculateCutoffAndProbability() {
-                        // Get the values of subject6, subject3, and subject4 from the form
+                        
                         const subject6 = parseFloat(document.getElementById('subject6').value);
                         const subject3Div2 = parseFloat(document.getElementById('subject3').value);
                         const subject4Div2 = parseFloat(document.getElementById('subject4').value);
             
-                        // Calculate the sum of subject6, subject3, and subject4
+                        
                         const sum = subject6 + subject3Div2 + subject4Div2;
             
-                        // Get the selected college and course
+                       
                         const collegeSelect = document.getElementById("collegeSelect").value;
                         const courseSelect = document.getElementById("courseSelect").value;
             
-                        // Calculate the cutoff
+                        
                         const totalMarks = sum;
                         const remainingMarks = 200 - totalMarks;
             
-                        // Calculate the probability (Random for demonstration)
-                        let probability = Math.floor(Math.random() * 101); // Replace with your own logic
+                        
+                        let probability = Math.floor(Math.random() * 101); /
             
-                        // Display the results
+                        
                         const resultElement = document.getElementById('result');
                         if (remainingMarks === 0) {
                             resultElement.textContent = `Cutoff: 200 (All subjects combined to 200)`;
@@ -136,14 +136,13 @@
                         } else {
                             resultElement.textContent = `Invalid input. Total marks exceed 200.\n`;
                         }{
-                            // Calculate the probability
+                            
 const cutoff = 161;
     const totalMarks = 200;
 
-    // Calculate the probability as a percentage
+   
     const probability = (cutoff / totalMarks) * 100;
 
-    // Display the result
     console.log(`The probability of a ${cutoff} cutoff out of ${totalMarks} is ${probability.toFixed(2)}%.`);
 
                         }
